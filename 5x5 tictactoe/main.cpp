@@ -1,27 +1,27 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include "say_hello.cpp"
+#include "greet.h"
+#include "board_function.h"
+
 using namespace std;
 
-#define RESET   "\033[0m"
-#define RED     "\033[31m"      /* Red */
-
-
 vector<vector<char>> board(6, vector<char> (6,'_'));
-// board using a two demensional vector of size 6 - 6
-// I plan to use number from 1 to 5
+vector<vector<string>> color(6, vector<string> (6, "White"));
+// 2-d vector to signify color
 
 signed main(){
+    int player_style = _greet();
+    // 1 is one player, 2 is multiplayer
+    print_board(board, color);
 
-    //greet_the_player();
+    if(player_style == 1) one_player(board,color);
+    else multiplayer(board, color);
 
-    for(int i = 1; i <= 5;i ++){
-        for(int j = 1; j <= 5; j++){
-            cout << RED << j << RESET <<  " ";
-        }
-        cout << endl;
-    }
-    int hello; cin >> hello;
 }
 
+
+
+
+
+//cout << RED << j << RESET <<  " ";
