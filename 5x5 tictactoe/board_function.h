@@ -5,8 +5,8 @@
 #include <thread>
 #include <ctype.h>
 
-#define fi first
-#define se second
+#define y first
+#define x second
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"      /* Red */
@@ -42,42 +42,41 @@ bool input_in_range(int inp){
 }
  
 void get_input(vector<vector<char>> &board, vector<vector<string>> &color, string player){
-    
     while(true) {
         cout << player << "\n";
         cout << "Vertical: ";
-        cin >> user_move.fi;
+        cin >> user_move.y;
         cout << "Horizon: ";
-        cin >> user_move.se;
+        cin >> user_move.x;
 
-        cout << user_move.fi << " " << user_move.se << "\n";
+        cout << user_move.y << " " << user_move.x << "\n";
 
-        if(input_in_range(user_move.fi) == false || input_in_range(user_move.se) == false){
+        if(input_in_range(user_move.y) == false || input_in_range(user_move.x) == false){
             // if the user output sth with sz > 1 or non-number -> do it again
             cout << "Invalid input" << endl;
             continue;
         }
 
-        if(board_visited[user_move.fi][user_move.se] == 1){
+        if(board_visited[user_move.y][user_move.x] == 1){
             cout << "Cheater!!!\n";
             this_thread::sleep_for(chrono::milliseconds(wait_time));
             cout << "You have one second to think about your life again\n";
             this_thread::sleep_for(chrono::milliseconds(wait_time));
         }
         else{
-            board_visited[user_move.fi][user_move.se] = 1;
+            board_visited[user_move.y][user_move.x] = 1;
             break;
             // input is valid
         }
     } 
 
     if(player == "Player 1"){
-        color[user_move.fi][user_move.se] = "Red";
-        board[user_move.fi][user_move.se] = 'O';
+        color[user_move.y][user_move.x] = "Red";
+        board[user_move.y][user_move.x] = 'O';
     }
     else{
-        color[user_move.fi][user_move.se] = "Blue";
-        board[user_move.fi][user_move.se] = 'X';
+        color[user_move.y][user_move.x] = "Blue";
+        board[user_move.y][user_move.x] = 'X';
     }
 }
 
@@ -95,8 +94,8 @@ void multiplayer(vector<vector<char>> &board, vector<vector<string>> &color){
         number_of_move_made++;
         // shift between players
     }
-    color[user_move.fi][user_move.se] = "red";
-    board[user_move.fi][user_move.se] = 'O';
+    color[user_move.y][user_move.x] = "red";
+    board[user_move.y][user_move.x] = 'O';
     print_board(board,color);
 
 }
