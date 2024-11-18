@@ -94,10 +94,6 @@ void multiplayer(vector<vector<char>> &board, vector<vector<string>> &color){
         number_of_move_made++;
         // shift between players
     }
-    color[user_move.y][user_move.x] = "red";
-    board[user_move.y][user_move.x] = 'O';
-    print_board(board,color);
-
 }
 
 void one_player(vector<vector<char>> &board, vector<vector<string>> &color){
