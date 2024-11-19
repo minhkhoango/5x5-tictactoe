@@ -3,7 +3,7 @@
 #include<string>
 #include <chrono>
 #include <thread>
-#include <ctype.h>
+#include "common.h"
 
 #define y first
 #define x second
@@ -14,15 +14,15 @@
 
 using namespace std;
 
-int wait_time = 1000;
-
-
 void print_board(vector<vector<char>> &board, vector<vector<string>> &color){
-    cout << "   1 2 3 4 5\n";
-    for(int i = 1; i <= 5; i++){
+    cout << "   ";
+    for(int i = 1; i < sz; i++) cout << i << " ";
+    cout << "\n";
+
+    for(int i = 1; i < sz; i++){
         // i is vertical, j is horizon
         cout << i << "  ";
-        for(int j = 1; j <= 5; j++){
+        for(int j = 1; j < sz; j++){
             if(color[i][j] == "White") cout << board[i][j] << " ";
             else if(color[i][j] == "Blue") cout << BLUE << board[i][j] << RESET << " ";
             else cout << RED << board[i][j] << RESET << " ";
@@ -30,7 +30,8 @@ void print_board(vector<vector<char>> &board, vector<vector<string>> &color){
         cout << endl;
     }
 }
-bool board_visited[6][6];
+
+bool board_visited[sz][sz];
 
 pair<int,int> user_move;
 // fi is vertical, se is horizon
@@ -43,7 +44,7 @@ int input_is_valid(string inp){
     if(check == false) return -1;
 
     int ans = inp[0] - '0';
-    if(ans <= 0 || ans >= 6) return -1;
+    if(ans <= 0 || ans >= sz) return -1;
     // check in range
     return ans;
 }

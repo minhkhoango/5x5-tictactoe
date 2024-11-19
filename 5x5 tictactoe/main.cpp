@@ -3,11 +3,12 @@
 #include<string>
 #include "greet.h"
 #include "board_function.h"
+#include "common.h"
 
 using namespace std;
 
-vector<vector<char>> board(6, vector<char> (6,'_'));
-vector<vector<string>> color(6, vector<string> (6, "White"));
+vector<vector<char>> board(sz, vector<char> (sz,'_'));
+vector<vector<string>> color(sz, vector<string> (sz, "White"));
 // 2-d vector to signify color
 
 signed main(){

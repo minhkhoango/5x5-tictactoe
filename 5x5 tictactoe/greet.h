@@ -2,6 +2,7 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include "common.h"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ int _greet() {
         else{
             cout << "Invalid input!";
         }
-        this_thread::sleep_for(chrono::milliseconds(1000));
+        this_thread::sleep_for(chrono::milliseconds(wait_time));
         cout << "\n\n";
     }
     return answer;
