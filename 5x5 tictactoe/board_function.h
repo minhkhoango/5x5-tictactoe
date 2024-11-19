@@ -35,23 +35,35 @@ bool board_visited[6][6];
 pair<int,int> user_move;
 // fi is vertical, se is horizon
 
-bool input_in_range(int inp){
-    bool a = false;
-    if((inp >= 1) && (inp <= 5)) a = true;
-    return a;
+int input_is_valid(string inp){
+    bool check = false;
+    
+    if(inp.size() == 1 && isdigit(inp[0])) check = true;
+    
+    if(check == false) return -1;
+
+    int ans = inp[0] - '0';
+    if(ans <= 0 || ans >= 6) return -1;
+    // check in range
+    return ans;
 }
  
 void get_input(vector<vector<char>> &board, vector<vector<string>> &color, string player){
     while(true) {
+        string defensive_inp_1, defensive_inp_2; 
         cout << player << "\n";
         cout << "Vertical: ";
-        cin >> user_move.y;
+        cin >> defensive_inp_1;
+        //cin >> user_move.y;
         cout << "Horizon: ";
-        cin >> user_move.x;
+        cin >> defensive_inp_2;
+        //cin >> user_move.x;
 
-        cout << user_move.y << " " << user_move.x << "\n";
+        //cout << user_move.y << " " << user_move.x << "\n";
+        user_move.y = input_is_valid(defensive_inp_1);
+        user_move.x = input_is_valid(defensive_inp_2);
 
-        if(input_in_range(user_move.y) == false || input_in_range(user_move.x) == false){
+        if(user_move.y == -1 || user_move.x == -1){
             // if the user output sth with sz > 1 or non-number -> do it again
             cout << "Invalid input" << endl;
             continue;
