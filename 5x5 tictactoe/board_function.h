@@ -4,6 +4,7 @@
 #include <chrono>
 #include <thread>
 #include "common.h"
+#include "check_winner.h"
 
 #define y first
 #define x second
@@ -55,10 +56,8 @@ void get_input(vector<vector<char>> &board, vector<vector<string>> &color, strin
         cout << player << "\n";
         cout << "Vertical: ";
         cin >> defensive_inp_1;
-        //cin >> user_move.y;
         cout << "Horizon: ";
         cin >> defensive_inp_2;
-        //cin >> user_move.x;
 
         //cout << user_move.y << " " << user_move.x << "\n";
         user_move.y = input_is_valid(defensive_inp_1);
@@ -97,16 +96,24 @@ void multiplayer(vector<vector<char>> &board, vector<vector<string>> &color){
     int number_of_move_made = 0;
     string player = "Player 1";
 
-    while(/*is_there_a_winner(board,color) == false && */number_of_move_made < 25){
+    while(number_of_move_made < 25){
         get_input(board,color,player);
         // if there is not a winner yet, we on playing
         print_board(board,color);
+
+        bool _is_there_a_winner = is_there_a_winner(board, player);
+        if(_is_there_a_winner == true){
+            cout << "Congratulations, " << player << " wonnnn!!!!";
+            return; 
+        }
 
         if(player == "Player 1") player = "Player 2";
         else if (player == "Player 2") player = "Player 1";
         number_of_move_made++;
         // shift between players
     }
+    
+    cout << "Hmmm, there seems to be no winner.....\n";
 }
 
 void one_player(vector<vector<char>> &board, vector<vector<string>> &color){
