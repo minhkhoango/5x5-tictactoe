@@ -57,7 +57,7 @@ bool check_diagonal(vector<vector<char>>& board){
     return false;
 }
 
-bool is_there_a_winner(vector<vector<char>>& board, string player){
+bool is_there_a_winner(vector<vector<char>>& board){
     // return true if someone wins, false otherwise
 
     bool _check_horizon = check_horizon(board);

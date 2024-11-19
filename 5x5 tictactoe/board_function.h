@@ -101,7 +101,7 @@ void multiplayer(vector<vector<char>> &board, vector<vector<string>> &color){
         // if there is not a winner yet, we on playing
         print_board(board,color);
 
-        bool _is_there_a_winner = is_there_a_winner(board, player);
+        bool _is_there_a_winner = is_there_a_winner(board);
         if(_is_there_a_winner == true){
             cout << "Congratulations, " << player << " wonnnn!!!!";
             return; 
