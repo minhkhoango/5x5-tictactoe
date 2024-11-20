@@ -43,7 +43,7 @@ bool check_diagonal(vector<vector<char>>& board){
         y++;
         x++;
     }
-
+    // check if the diagonal from top left to bottom right has a winner
 
     check_if_similar = board[sz-1][1];
     y = sz-2, x = 2;
@@ -52,6 +52,7 @@ bool check_diagonal(vector<vector<char>>& board){
         y--;
         x++;
     }
+    // check if the diagonal from bottom left to top right has a winner
 
     if(check_diag_down == true || check_diag_up == true) return true;
     return false;

@@ -21,8 +21,3 @@ signed main(){
 
 }
 
-
-
-
-
-//cout << RED << j << RESET <<  " ";

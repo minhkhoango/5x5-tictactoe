@@ -41,10 +41,13 @@ int input_is_valid(string inp){
     bool check = false;
     
     if(inp.size() == 1 && isdigit(inp[0])) check = true;
+    // check if string size is one and the first character is a number
     
     if(check == false) return -1;
 
     int ans = inp[0] - '0';
+    // convert string to int
+
     if(ans <= 0 || ans >= sz) return -1;
     // check in range
     return ans;
