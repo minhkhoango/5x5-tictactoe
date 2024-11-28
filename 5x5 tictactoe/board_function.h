@@ -73,9 +73,7 @@ void get_input(vector<vector<char>> &board, vector<vector<string>> &color, strin
         }
 
         if(board_visited[user_move.y][user_move.x] == 1){
-            cout << "Cheater!!!\n";
-            this_thread::sleep_for(chrono::milliseconds(wait_time));
-            cout << "You have one second to think about your life again\n";
+            cout << "Position Has Already Been Taken \n";
             this_thread::sleep_for(chrono::milliseconds(wait_time));
         }
         else{
@@ -98,14 +96,14 @@ void get_input(vector<vector<char>> &board, vector<vector<string>> &color, strin
 void multiplayer(vector<vector<char>> &board, vector<vector<string>> &color, string player){
     int number_of_move_made = 0;
 
-    while(number_of_move_made < 16){
+    while(number_of_move_made < 25){
         get_input(board,color,player);
         // if there is not a winner yet, we on playing
         print_board(board,color);
 
         bool _is_there_a_winner = is_there_a_winner(board);
         if(_is_there_a_winner == true){
-            cout << "Congratulations, " << player << " wonnnn!!!!";
+            cout << "Congratulations, " << player << " won!";
             return; 
         }
 
@@ -135,6 +133,16 @@ void bot_algo(vector<vector<char>> &board, vector<vector<string>> &color)
     {
         bot_move(1, 1, board, color);
         return;
+    }
+    else if(board[4][1] == '_')
+    {
+      bot_move(1, 4, board, color);
+      return;
+    }
+    else if(board[1][4] == '_')
+    {
+     bot_move(4, 1, board, color);
+     return;
     }
 
     for (int col = 1; col < sz; col++)
