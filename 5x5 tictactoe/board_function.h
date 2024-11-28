@@ -98,7 +98,7 @@ void get_input(vector<vector<char>> &board, vector<vector<string>> &color, strin
 void multiplayer(vector<vector<char>> &board, vector<vector<string>> &color, string player){
     int number_of_move_made = 0;
 
-    while(number_of_move_made < 25){
+    while(number_of_move_made < 16){
         get_input(board,color,player);
         // if there is not a winner yet, we on playing
         print_board(board,color);
