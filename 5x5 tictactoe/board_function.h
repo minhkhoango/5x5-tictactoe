@@ -13,6 +13,12 @@
 #define RED     "\033[31m"      /* Red */
 #define BLUE    "\033[34m"      /* Blue */
 
+/*
+#define RESET   ""
+#define RED     ""      
+#define BLUE    ""      
+*/
+
 using namespace std;
 
 void print_board(vector<vector<char>> &board, vector<vector<string>> &color){
