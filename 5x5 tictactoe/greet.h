@@ -15,20 +15,19 @@ void displayMenu() {
 }
 
 int _greet() {
-    string username;
-    int choice;
+    string choice;
     int answer;
 
     while(true){
         displayMenu();
 
         cin >> choice;
-        if(choice == 1)
+        if(choice == "1")
         {
             answer = 1;
             break;
         }
-        else if(choice == 2)
+        else if(choice == "2")
         {
             answer = 2;
             break;
@@ -36,9 +35,6 @@ int _greet() {
         else
         {
          cout << "Invalid input!";
-         exit(0);
-         break;
-
         }
         this_thread::sleep_for(chrono::milliseconds(wait_time));
         cout << "\n\n";
