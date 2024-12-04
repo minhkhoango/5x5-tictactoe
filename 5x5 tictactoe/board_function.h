@@ -134,14 +134,14 @@ void bot_algo(vector<vector<char>> &board, vector<vector<string>> &color)
         bot_move(1, 1, board, color);
         return;
     }
-    else if(board[4][1] == '_')
+    else if(board[sz-1][1] == '_')
     {
-      bot_move(1, 4, board, color);
+      bot_move(1, sz-1, board, color);
       return;
     }
-    else if(board[1][4] == '_')
+    else if(board[1][sz-1] == '_')
     {
-     bot_move(4, 1, board, color);
+     bot_move(sz-1, 1, board, color);
      return;
     }
 
@@ -199,28 +199,32 @@ void one_player(vector<vector<char>> &board, vector<vector<string>> &color)
     int number_of_move_made = 0;
     string player = "Bot";
 
-    while(number_of_move_made < 16){
-
-        bool _is_there_a_winner = is_there_a_winner(board);
-        if(_is_there_a_winner == true){
-            cout << "Congratulations, " << player << " wonnnn!!!!";
-            return;
-        }
-
+    while(number_of_move_made < (sz-1)*(sz-1)){
 
         if (number_of_move_made % 2 == 0)
         {
             bot_algo(board, color);
-            number_of_move_made++;
-            player = "Player 2";
             print_board(board, color);
+
+            if(is_there_a_winner(board)){
+                    cout << "Congratulations, " << player << " wonnnn!!!!";
+                return;
+            }
+
+            player = "Player 2";
         }
         else
         {
             get_input(board, color, player);
-            number_of_move_made++;
-            player = "Bot";
             print_board(board, color);
+
+            if(is_there_a_winner(board)){
+                    cout << "Congratulations, " << player << " wonnnn!!!!";
+                return;
+            }
+
+            player = "Bot";
         }
+        number_of_move_made++;
     }
 }

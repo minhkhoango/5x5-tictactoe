@@ -19,6 +19,4 @@ signed main(){
 
     if(player_style == 1) one_player(board,color);
     else multiplayer(board, color, player);
-
-
 }
