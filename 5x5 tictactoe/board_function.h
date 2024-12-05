@@ -9,15 +9,9 @@
 #define y first
 #define x second
 
-#define RESET   "\033[0m"
-#define RED     "\033[31m"      /* Red */
-#define BLUE    "\033[34m"      /* Blue */
-
-/*
 #define RESET   ""
 #define RED     ""      
 #define BLUE    ""      
-*/
 
 using namespace std;
 
