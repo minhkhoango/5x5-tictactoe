@@ -65,7 +65,6 @@ bool is_there_a_winner(vector<vector<char>>& board){
     bool _check_vertical = check_vertical(board);
     bool _check_diagonal = check_diagonal(board);
 
-    cout << _check_vertical << " " << _check_horizon << " " << _check_diagonal << "\n";
     if(_check_horizon == 1 || _check_vertical == 1 || _check_diagonal == 1){
         return true;
     }
